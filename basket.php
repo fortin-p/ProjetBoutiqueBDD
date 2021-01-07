@@ -61,7 +61,7 @@ $liste_products = array($article1, $article2, $article3);
         <?php
 
 
-        foreach ($varArticles as $key => $products) {
+        foreach ($_SESSION['panier'] as $key => $products) {
             ?>
 
             <?php

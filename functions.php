@@ -44,13 +44,13 @@ function displayItem($name, $price, $picture, $quantity, $key, $messageErrorPric
     echo "<input class='btn btn-danger' type='submit' value='Supprimer' name='delete[$key]'>";
 }
 
-function displayItemCheckedBox($name, $price, $picture, $key) // functions pour afficher tout les items
+function displayItemCheckedBox($name, $price, $picture) // functions pour afficher tout les items
 {
 
     echo "<img class='card-img-top' src='" . $picture . "' alt=''/>";
     echo "<h1 class='text-center text-white'>" . $name . "</h1>";
     echo "<h2 class='text-center text-white'>" . $price . "$</h2>";
-    echo "<input class='d-flex-inline' type='checkbox' class=' form-check-input' name='articles[$key]'>";
+    echo "<input class='d-flex-inline' type='checkbox' class=' form-check-input' name='articles[]'>";
 
 
 }

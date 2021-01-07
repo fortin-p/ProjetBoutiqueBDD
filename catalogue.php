@@ -2,14 +2,7 @@
 include "article.php";
 include "functions.php";
 include "database.php";
-try
-{
-    $bdd = new PDO('mysql:host=localhost;dbname=my_base;charset=utf8', 'pef', 'PefCampus38');
-}
-catch(Exception $e)
-{
-    die('Erreur : '.$e->getMessage());
-}
+
 
 ?>
 <!DOCTYPE html>
@@ -25,20 +18,23 @@ catch(Exception $e)
 require "header.php"
 ?>
 
-    <form class="d-flex justify-content-center" action="basket.php" method="POST">
-        <div class='card p-2 ml-7 ' style='background: linear-gradient(0deg,#6930c3,#222,#d00000); width: 200px;'>
-        <?php
+<form class=" justify-content-center" action="basket.php" method="POST">
+    <div class="d-flex justify-content-around">
+        <div class=' card p-2 ml-7 ' style='background: linear-gradient(0deg,#6930c3,#222,#d00000); width: 200px;'>
+            <?php
 
-       $reponse = selectAll();   //On affiche tout les produits de notre catalogue
-       while ($donnees = $reponse->fetch()){
-           $key=0;
-            displayItemCheckedBox($donnees["price"], $donnees["name"], $donnees["image"],$key);
-        }
-        echo '</div>';
-       ?>
+            $reponse = selectAll();   //On affiche tout les produits de notre catalogue
+            while ($donnees = $reponse->fetch()){
 
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+                displayItemCheckedBox($donnees["price"], $donnees["name"], $donnees["image"]);
+            }
+
+            ?>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+
+</form>
 
 
 
