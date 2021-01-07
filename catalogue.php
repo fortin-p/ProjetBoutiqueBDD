@@ -18,8 +18,8 @@ include "database.php";
 require "header.php"
 ?>
 
-<form class=" justify-content-center" action="basket.php" method="POST">
-    <div class="d-flex justify-content-around">
+<form class="d-flex justify-content-center" action="basket.php" method="POST">
+
         <div class=' card p-2 ml-7 ' style='background: linear-gradient(0deg,#6930c3,#222,#d00000); width: 200px;'>
             <?php
 
@@ -31,7 +31,7 @@ require "header.php"
 
             ?>
             <button type="submit" class="btn btn-primary">Submit</button>
-        </div>
+
     </div>
 
 </form>

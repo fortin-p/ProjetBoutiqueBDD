@@ -90,7 +90,12 @@ $liste_products = array($article1, $article2, $article3);
             <div class='d-flex card p-2 ml-5 '
                  style='background: linear-gradient(0deg,#ffba08,#222,#e85d04); width: 300px;'>
                 <?php
-                displayItem($liste_products[$key]['name'], $liste_products[$key]['price'], $liste_products[$key]['picture'], $quantity[$key], $key, $messageErrorPrice);
+                $bdd = connect();
+                $reponse = selectAll();
+                var_dump($reponse);
+                $donnees = $reponse->fetchAll();
+                displayItem($donnees['name'], $donnees['price'], $donnees['picture'], $quantity[$key], $key, $messageErrorPrice);
+
                 ?>
             </div>
             <?
