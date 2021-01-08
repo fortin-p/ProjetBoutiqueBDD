@@ -20,6 +20,24 @@ function selectAll(){
     return $reponse;
 
 }
+function selectAllShoes(){
+    $bdd = connect();
+    $reponse = $bdd->query('SELECT * from chaussures');
+    return $reponse;
+
+}
+function selectAllclothes(){
+    $bdd = connect();
+    $reponse = $bdd->query('SELECT * from vetement');
+    return $reponse;
+
+}
+function selectAllCustomers(){
+    $bdd = connect();
+    $reponse = $bdd->query('SELECT * from customers');
+    return $reponse;
+
+}
 
 
 function productNoStock(){

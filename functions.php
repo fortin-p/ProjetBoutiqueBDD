@@ -1,5 +1,5 @@
 <?php
-include "article.php";
+include_once "article.php";
 
 
 function displayItem1()                     // fonction pour afficher article1
@@ -68,6 +68,56 @@ function basketTotal($liste_products) //fonction cout total du panier
     return $total;
 }
 
+function displayArticle(Article $article){
+    ?>
+        <div class="card d-flex">
+    <p class="text-center"> Nom du produit : <?php echo $article->name ;?></p>
+    <p> Description du produit : <?php echo $article->description;?></p>
+    <p> Prix du produit :<?php echo $article->price;?><p>
+    <p> Image: <?php echo $article->image;?><p>
+    <p> Poids: <?php echo $article->weight;?><p>
+    <p> Quantité: <?php echo $article->quantity;?><p>
+    <p> Disponible: <?php echo $article->available;?><p>
+    <p> Id: <?php echo $article->id;?><p>
+        </div>
+    <?php
 
+
+
+}
+function displayCat(Catalogue $catalogue)
+{
+    foreach ($catalogue -> articles as $article){
+        displayArticle($article);
+
+
+    }
+
+
+}
+
+function displayCustomer(Customer $customer){
+    ?>
+    <div class="container card d-flex">
+<p><bold>Nom:</bold>  <?php echo $customer->first_name;?></p>
+<p><bold>Prénom:</bold>  <?php  echo $customer->last_name;?></p>
+<p><bold>Adresse:</bold>  <?php echo $customer->adresse;?></p>
+<p><bold>Zip-Code:</bold>  <?php echo $customer->zip_code;?></p>
+<p><bold>Ville:</bold>  <?php echo $customer->city;?></p>
+<p><bold>id:</bold>  <?php  echo $customer->id;?></p>
+    </div>
+    <?php
+
+
+}
+
+function displayList(ListCustomer $listcustomer){
+    foreach ($listcustomer -> customers as $customer){
+        displayCustomer($customer);
+
+    }
+
+
+}
 
 

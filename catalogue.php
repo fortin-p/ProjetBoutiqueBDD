@@ -1,8 +1,8 @@
 <?php
-include "article.php";
-include "functions.php";
-include "database.php";
-
+require_once "article.php";
+require_once "functions.php";
+require_once "database.php";
+require_once 'class_Catalogue.php';
 
 ?>
 <!DOCTYPE html>
@@ -18,21 +18,18 @@ include "database.php";
 require "header.php"
 ?>
 
-<form class="d-flex justify-content-center" action="basket.php" method="POST">
+<form class="" action="basket.php" method="POST">
 
-        <div class=' card p-2 ml-7 ' style='background: linear-gradient(0deg,#6930c3,#222,#d00000); width: 200px;'>
+
             <?php
+        $catalogue = new Catalogue();
+        displayCat($catalogue);
 
-            $reponse = selectAll();   //On affiche tout les produits de notre catalogue
-            while ($donnees = $reponse->fetch()){
-
-                displayItemCheckedBox($donnees["price"], $donnees["name"], $donnees["image"]);
-            }
 
             ?>
             <button type="submit" class="btn btn-primary">Submit</button>
 
-    </div>
+
 
 </form>
 
