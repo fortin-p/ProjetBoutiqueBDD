@@ -23,7 +23,6 @@ require "header.php"
 
             <?php
         $catalogue = new Catalogue();
-
         displayCat($catalogue);
 
 

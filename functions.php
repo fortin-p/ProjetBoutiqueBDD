@@ -82,7 +82,8 @@ function displayArticle(Article $article){
         </div>
 
     <?php
-
+echo $article->pointure;
+    echo $article->marque;
 
 
 
@@ -92,8 +93,8 @@ function displayCat(Catalogue $catalogue)
     foreach ($catalogue -> articles as $article){
         displayArticle($article);
 
-
     }
+
 
 
 }
