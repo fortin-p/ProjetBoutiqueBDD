@@ -30,7 +30,7 @@ class Catalogue
         while($donnees = $reponse->fetch()){
 
             $chaussure = new Shoe($donnees['pointure'],$donnees['marque'],$donnees['id']);
-            $this->articles [donnees['pointure']] = $chaussure;
+            $this->articles [$donnees['id']] = $chaussure;
 
         }
 

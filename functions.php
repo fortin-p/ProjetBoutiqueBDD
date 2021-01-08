@@ -68,7 +68,7 @@ function basketTotal($liste_products) //fonction cout total du panier
     return $total;
 }
 
-function displayArticle(Article $article,Shoe $shoe){
+function displayArticle(Article $article){
     ?>
         <div class="card d-flex">
     <p class="text-center"> Nom du produit : <?php echo $article->name ;?></p>
@@ -82,8 +82,7 @@ function displayArticle(Article $article,Shoe $shoe){
         </div>
 
     <?php
-    $shoe->pointure;
-    $shoe->marque;
+
 
 
 
