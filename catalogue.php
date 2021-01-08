@@ -3,7 +3,7 @@ require_once "article.php";
 require_once "functions.php";
 require_once "database.php";
 require_once 'class_Catalogue.php';
-
+require_once 'class_chaussure.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,7 +23,10 @@ require "header.php"
 
             <?php
         $catalogue = new Catalogue();
+
         displayCat($catalogue);
+
+
 
 
             ?>

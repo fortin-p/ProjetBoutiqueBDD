@@ -26,7 +26,7 @@ function selectAllShoes(){
     return $reponse;
 
 }
-function selectAllclothes(){
+function selectAllClothes(){
     $bdd = connect();
     $reponse = $bdd->query('SELECT * from vetement');
     return $reponse;
