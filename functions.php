@@ -82,8 +82,9 @@ function displayArticle(Article $article){
         <p> Disponible: <?php echo $article->available;?><p>
         <p> Id: <?php echo $article->id;?><p>
             <input class='d-flex-inline' type='checkbox' class=' form-check-input' name='articles[]'>
-            <?php  echo $article->pointure;// a verifier
-            echo $article->marque;// a verifier ?>
+        <p> Pointure: <?php  echo $article->pointure;;?></p>
+        <p> Marque : <?php echo $article->marque;?></p>
+
     </div>
 
     <?php
@@ -101,6 +102,32 @@ function displayCat(Catalogue $catalogue)
 
 
 
+
+}
+//function displayBask(Basket $basket)
+//{
+//    foreach ($basket -> articles as $article){
+//        displayBasket($article);
+//
+//    }
+//
+//
+//
+//
+//}
+function displayBasket(Article $article) // functions pour afficher tout les items
+{
+    echo "<img class='card-img-top' src='" . $article->image . "' alt=''/>";
+    echo "<h1 class='text-center text-white'>" . $article->name . "</h1>";
+    if (is_numeric($article->quantity)) {
+        echo "<h2 class='text-center text-white'>" . $article->price * (int)$article->quantity . "$</h2>";
+    }
+    echo "<h2 class='text-center text-white'>" . $article->description . "</h2>";
+    echo "<label for='quantity'>Quantity:</label>";
+    echo "<input class='d-inline'  type='' id='quantity' name='articles[$]' value='$article->quantity'  min='1' style='width:45px'>";
+    //echo "<p class='d-inline text-black'>" . $messageErrorPrice . "</p>";
+
+    echo "<input class='btn btn-danger' type='submit' value='Supprimer' name='delete[]'>";
 }
 
 function displayCustomer(Customer $customer){

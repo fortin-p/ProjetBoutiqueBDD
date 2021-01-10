@@ -21,15 +21,18 @@ require "header.php"
 <form class="" action="basket.php" method="POST">
 
 
-            <?php
-        $catalogue = new Catalogue();
-        displayCat($catalogue);
+    <?php
+    $catalogue = new Catalogue();
+    $nike = new Shoe(44,"nike",16);
+    $nike -> test();
+
+    displayCat($catalogue);
 
 
 
 
-            ?>
-            <button type="submit" class="btn btn-primary">Submit</button>
+    ?>
+    <button type="submit" class="btn btn-primary">Submit</button>
 
 
 

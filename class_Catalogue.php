@@ -10,6 +10,8 @@ class Catalogue
         $this->getAllArticle();
         $this->getAllShoes();
 
+
+
     }
 
 
@@ -25,11 +27,12 @@ class Catalogue
         }
 
     }
+
     function getAllShoes(){
         $reponse = selectAllShoes();
         while($donnees = $reponse->fetch()){
 
-            $chaussure = new Shoe($donnees['pointure'],$donnees['marque'],$donnees['id']);
+            $chaussure = new Shoe( $donnees['pointure'],$donnees['marque'],$donnees['id']);
             $this->articles [$donnees['id']] = $chaussure;
 
         }
