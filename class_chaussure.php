@@ -1,7 +1,7 @@
 <?php
 require_once 'database.php';
 require_once 'article.php';
-
+require_once 'class_Catalogue.php';
 class Shoe extends Article{
     public $pointure;
     public $marque;

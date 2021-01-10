@@ -29,14 +29,14 @@ function displayItem3()                     // fonction pour afficher article3
 
 }
 
-function displayItem($name, $price, $picture, $quantity, $key, $messageErrorPrice) // functions pour afficher tout les items
+function displayItem($name, $price, $image,$description, $quantity, $key, $messageErrorPrice) // functions pour afficher tout les items
 {
-    echo "<img class='card-img-top' src='" . $picture . "' alt=''/>";
+    echo "<img class='card-img-top' src='" . $image . "' alt=''/>";
     echo "<h1 class='text-center text-white'>" . $name . "</h1>";
     if (is_numeric($quantity)) {
         echo "<h2 class='text-center text-white'>" . $price * (int)$quantity . "$</h2>";
     }
-
+    echo "<h2 class='text-center text-white'>" . $description . "</h2>";
     echo "<label for='quantity'>Quantity:</label>";
     echo "<input class='d-inline'  type='' id='quantity' name='articles[$key]' value='$quantity'  min='1' style='width:45px'>";
     echo "<p class='d-inline text-black'>" . $messageErrorPrice . "</p>";
@@ -44,13 +44,15 @@ function displayItem($name, $price, $picture, $quantity, $key, $messageErrorPric
     echo "<input class='btn btn-danger' type='submit' value='Supprimer' name='delete[$key]'>";
 }
 
-function displayItemCheckedBox($name, $price, $picture) // functions pour afficher tout les items
+function displayItemCheckedBox($name, $price, $image,$description,$quantity,$key) // functions pour afficher tout les items
 {
 
-    echo "<img class='card-img-top' src='" . $picture . "' alt=''/>";
+    echo "<img class='card-img-top' src='" . $image . "' alt=''/>";
     echo "<h1 class='text-center text-white'>" . $name . "</h1>";
     echo "<h2 class='text-center text-white'>" . $price . "$</h2>";
-    echo "<input class='d-flex-inline' type='checkbox' class=' form-check-input' name='articles[]'>";
+    echo "<h2 class='text-center text-white'>" . $description . "</h2>";
+    echo "<input class='d-inline'  type='' id='quantity' name='articles[$key]' value='$quantity'  min='1' style='width:45px'>";
+
 
 
 }
@@ -70,20 +72,22 @@ function basketTotal($liste_products) //fonction cout total du panier
 
 function displayArticle(Article $article){
     ?>
-        <div class="card d-flex">
-    <p class="text-center"> Nom du produit : <?php echo $article->name ;?></p>
-    <p> Description du produit : <?php echo $article->description;?></p>
-    <p> Prix du produit :<?php echo $article->price;?><p>
-    <p> Image: <?php echo $article->image;?><p>
-    <p> Poids: <?php echo $article->weight;?><p>
-    <p> Quantité: <?php echo $article->quantity;?><p>
-    <p> Disponible: <?php echo $article->available;?><p>
-    <p> Id: <?php echo $article->id;?><p>
-        </div>
+    <div class="card d-flex">
+        <p class="text-center"> Nom du produit : <?php echo $article->name ;?></p>
+        <p> Description du produit : <?php echo $article->description;?></p>
+        <p> Prix du produit :<?php echo $article->price;?><p>
+        <p> Image: <?php echo $article->image;?><p>
+        <p> Poids: <?php echo $article->weight;?><p>
+        <p> Quantité: <?php echo $article->quantity;?><p>
+        <p> Disponible: <?php echo $article->available;?><p>
+        <p> Id: <?php echo $article->id;?><p>
+            <input class='d-flex-inline' type='checkbox' class=' form-check-input' name='articles[]'>
+            <?php  echo $article->pointure;// a verifier
+            echo $article->marque;// a verifier ?>
+    </div>
 
     <?php
-echo $article->pointure;
-    echo $article->marque;
+
 
 
 
@@ -102,12 +106,12 @@ function displayCat(Catalogue $catalogue)
 function displayCustomer(Customer $customer){
     ?>
     <div class="container card d-flex">
-<p><bold>Nom:</bold>  <?php echo $customer->first_name;?></p>
-<p><bold>Prénom:</bold>  <?php  echo $customer->last_name;?></p>
-<p><bold>Adresse:</bold>  <?php echo $customer->adresse;?></p>
-<p><bold>Zip-Code:</bold>  <?php echo $customer->zip_code;?></p>
-<p><bold>Ville:</bold>  <?php echo $customer->city;?></p>
-<p><bold>id:</bold>  <?php  echo $customer->id;?></p>
+        <p><bold>Nom:</bold>  <?php echo $customer->first_name;?></p>
+        <p><bold>Prénom:</bold>  <?php  echo $customer->last_name;?></p>
+        <p><bold>Adresse:</bold>  <?php echo $customer->adresse;?></p>
+        <p><bold>Zip-Code:</bold>  <?php echo $customer->zip_code;?></p>
+        <p><bold>Ville:</bold>  <?php echo $customer->city;?></p>
+        <p><bold>id:</bold>  <?php  echo $customer->id;?></p>
     </div>
     <?php
 

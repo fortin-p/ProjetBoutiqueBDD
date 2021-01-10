@@ -1,9 +1,11 @@
 <?php
 session_start();
 
-
-include "article.php";
-include "functions.php";
+require_once "article.php";
+require_once "functions.php";
+require_once "database.php";
+require_once 'class_Catalogue.php';
+require_once 'class_chaussure.php';
 $messageErrorPrice = "";
 $articlesQuantite = [];
 $varArticles = [];
@@ -66,39 +68,41 @@ $liste_products = array($article1, $article2, $article3);
 
             <?php
 
-            $articlesQuantite[$liste_products[$key]['name']] = $liste_products[$key]['price'];
-            $quantity[$key] = $products;
-            if ($quantity[$key] === 'on') {
-                $quantity[$key] = 1;
-            }
 
-
-            if (is_numeric($products) && is_numeric($liste_products[$key]['price'])) {
-                $articlesQuantite [$liste_products[$key]['name']] = $liste_products[$key]['price'] * $products;
-            }
-
-
-            if ($quantity[$key] != (int)$quantity[$key]) {
-                $messageErrorPrice = "Veuillez saisir un entier!!";
-
-            } else {
-
-                $messageErrorPrice = "Veuillez saisir une quantité!!";
-            }
 
             ?>
             <div class='d-flex card p-2 ml-5 '
                  style='background: linear-gradient(0deg,#ffba08,#222,#e85d04); width: 300px;'>
                 <?php
-                $bdd = connect();
+
                 $reponse = selectAll();
-                var_dump($reponse);
-                $donnees = $reponse->fetchAll();
-                displayItem($donnees['name'], $donnees['price'], $donnees['picture'], $quantity[$key], $key, $messageErrorPrice);
+
+               while($donnees = $reponse->fetchAll()){
+                   $articlesQuantite[$donnees[$key]['name']] = $donnees[$key]['price'];
+                   $quantity[$key] = $products;
+                   if ($quantity[$key] === 'on') {
+                       $quantity[$key] = 1;
+                   }
+
+
+                   if (is_numeric($products) && is_numeric($donnees[$key]['price'])) {
+                       $articlesQuantite [$donnees[$key]['name']] = $donnees[$key]['price'] * $products;
+                   }
+
+
+                   if ($quantity[$key] != (int)$quantity[$key]) {
+                       $messageErrorPrice = "Veuillez saisir un entier!!";
+
+                   } else {
+
+                       $messageErrorPrice = "Veuillez saisir une quantité!!";
+                   }
+                   displayItem($donnees[$key]['name'], $donnees[$key]['price'], $donnees[$key]['image'],$donnees[$key]['description'],$quantity[$key],$key,$messageErrorPrice);
 
                 ?>
             </div>
             <?
+               }
 
         }
 
