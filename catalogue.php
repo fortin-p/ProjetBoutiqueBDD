@@ -4,7 +4,7 @@ require_once "functions.php";
 require_once "database.php";
 require_once 'class_Catalogue.php';
 require_once 'class_chaussure.php';
-session_start();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,11 +27,11 @@ require "header.php"
     $catalogue = new Catalogue();
     displayCat($catalogue);
     $b = new Shoe(42,"nike");
-   $b->test();
-    displayArticle($b);
+    $b->test();
+    displayArticleShoes($b);
     $c = new Shoe(44,"DC");
     $c->test2();
-    displayArticle($c);
+    displayArticleShoes($c);
     ?>
     <button type="submit" class="btn btn-primary">Submit</button>
 

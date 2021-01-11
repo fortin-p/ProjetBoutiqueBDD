@@ -43,19 +43,17 @@ require "header.php"
 
 <form action="#" method="POST">
 
-    <div class="container d-flex">
 
 
-        <div class='d-flex card p-2 ml-5 '
-             style='background: linear-gradient(0deg,#ffba08,#222,#e85d04); width: 300px;'>
+
+
             <?php
             $basket = new Basket($_SESSION['panier']);
 
 
 
             ?>
-        </div>
-    </div>
+
     <?php
 
     echo "le prix total est : " . basketTotal($articlesQuantite);// total des articles selectionnez

@@ -77,7 +77,37 @@ function displayArticle(Article $article){
         <p class="text-center"> Nom du produit : <?php echo $article->name ;?></p>
         <p> Description du produit : <?php echo $article->description;?></p>
         <p> Prix du produit :<?php echo $article->price;?><p>
-        <?php    echo "<img class='card-img-top' src='". $article->image . "' alt=''/>";?>
+            <?php    echo "<img class='card-img-top' src='". $article->image . "' alt=''/>";?>
+        <p> Poids: <?php echo $article->weight;?><p>
+        <p> Quantité: <?php echo $article->quantity;?><p>
+        <p> Disponible: <?php echo $article->available;?><p>
+        <p> Id: <?php echo $article->id;?><p>
+            <input class='d-flex-inline' type='checkbox' class=' form-check-input' name='addarticles[]' value="<?= $article->id ?>">
+    </div>
+
+    <?php
+
+}
+function displayArticleBasket(Article $article){
+   ?>
+    <div class="card d-flex flex-wrap"><?php
+      echo  "<p class='text-center'> Nom du produit : ". $article->name. "</p>";
+       echo "<p> Description du produit : " . $article->description."</p>";
+        echo "<p> Prix du produit :" . $article->price."<p>";
+               echo "<img class='card-img-top' src='". $article->image . "' alt=''/>";
+            echo "<input class='d-inline'  type='' id='quantity' name='articles[]' value=''  min='1' style='width:45px'>"; ?>
+    </div>
+
+    <?php
+
+}
+function displayArticleShoes(Article $article){
+    ?>
+    <div class="card d-flex flex-wrap">
+        <p class="text-center"> Nom du produit : <?php echo $article->name ;?></p>
+        <p> Description du produit : <?php echo $article->description;?></p>
+        <p> Prix du produit :<?php echo $article->price;?><p>
+            <?php    echo "<img class='card-img-top' src='". $article->image . "' alt=''/>";?>
         <p> Poids: <?php echo $article->weight;?><p>
         <p> Quantité: <?php echo $article->quantity;?><p>
         <p> Disponible: <?php echo $article->available;?><p>
@@ -85,22 +115,16 @@ function displayArticle(Article $article){
         <p> Marque : <?php echo $article->marque;?></p>
         <p> Id: <?php echo $article->id;?><p>
             <input class='d-flex-inline' type='checkbox' class=' form-check-input' name='addarticles[]' value="<?= $article->id ?>">
-
-
-
-
     </div>
 
     <?php
-
-
-
 
 }
 function displayCat(Catalogue $catalogue)
 {
     foreach ($catalogue -> articles as $article){
         displayArticle($article);
+
 
     }
 
@@ -119,19 +143,22 @@ function displayBask(Basket $basket)
 
 
 }
-function displayBasket(Basket $basket) // functions pour afficher tout les items
+function displayBasket(Article $article) // functions pour afficher tout les items
 {
-    echo "<img class='card-img-top' src='" . $basket->image . "' alt=''/>";
-    echo "<h1 class='text-center text-white'>" . $basket->name . "</h1>";
-    if (is_numeric($basket->quantity)) {
-        echo "<h2 class='text-center text-white'>" . $basket->price * (int)$basket->quantity . "$</h2>";
+    ?>
+    <div class="card d-flex"style='background: linear-gradient(0deg,#ffba08,#222,#e85d04); width: 300px;'><?php
+    echo "<img class='card-img-top' src='" . $article->image . "' alt=''/>";
+    echo "<h1 class='text-center text-white'>" . $article->name . "</h1>";
+    if (is_numeric($article->quantity)) {
+        echo "<h2 class='text-center text-white'>" . $article->price  . "$</h2>";
     }
-    echo "<h2 class='text-center text-white'>" . $basket->description . "</h2>";
+    echo "<h2 class='text-center text-white'>" . $article->description . "</h2>";
     echo "<label for='quantity'>Quantity:</label>";
-    echo "<input class='d-inline'  type='' id='quantity' name='articles[]' value='$basket->quantity'  min='1' style='width:45px'>";
+    // echo "<input class='d-inline'  type='' id='quantity' name='articles[]' value='$basket->quantity'  min='1' style='width:45px'>";
     //  echo "<p class='d-inline text-black'>" . $messageErrorPrice . "</p>";
-
-    echo "<input class='btn btn-danger' type='submit' value='Supprimer' name='delete[]'>";
+    echo "<input class='d-inline'  type='' id='quantity' name='articles[]' value='1'  min='1' style='width:45px'>";
+    echo "<input class='btn btn-danger' type='submit' value='Supprimer' name='delete[]'>";?>
+      </div><?php
 }
 
 function displayCustomer(Customer $customer){

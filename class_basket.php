@@ -21,9 +21,11 @@ class Basket{
             $bdd = connect();
             $reponse = $bdd->query("SELECT * from products Where id=$products");
             $donnees = $reponse->fetch(PDO::FETCH_ASSOC);
-            $article = new Article($donnees['name'],$donnees['description'],$donnees['price'],$donnees['image'],$donnees['weight'],$donnees['quantity'],$donnees['available'],$donnees['id']);
-            displayArticle($article);
 
+            $article = new Article($donnees['name'],$donnees['description'],$donnees['price'],$donnees['image'],$donnees['weight'],$donnees['quantity'],$donnees['available'],$donnees['id']);
+
+            displayBasket($article);
+            var_dump($article);
 
         }
 
