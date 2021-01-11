@@ -2,6 +2,7 @@
 include_once "article.php";
 require_once 'class_chaussure.php';
 
+
 function displayItem1()                     // fonction pour afficher article1
 {
 
@@ -109,8 +110,8 @@ function displayCat(Catalogue $catalogue)
 }
 function displayBask(Basket $basket)
 {
-    foreach ($basket -> articles as $article){
-        displayBasket($article);
+    foreach ($basket -> basket as $basket){
+        displayBasket($basket);
 
     }
 

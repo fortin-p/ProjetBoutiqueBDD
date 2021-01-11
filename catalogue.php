@@ -27,9 +27,11 @@ require "header.php"
     $catalogue = new Catalogue();
     displayCat($catalogue);
     $b = new Shoe(42,"nike");
-    $b->test();
+   $b->test();
     displayArticle($b);
-
+    $c = new Shoe(44,"DC");
+    $c->test2();
+    displayArticle($c);
     ?>
     <button type="submit" class="btn btn-primary">Submit</button>
 
