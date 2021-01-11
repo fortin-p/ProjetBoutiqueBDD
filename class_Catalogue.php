@@ -5,12 +5,9 @@ require_once 'class_chaussure.php';
 class Catalogue
 {
 
-    public $articles = array();
+    public $articles;
     public function __construct(){  //new catalogue appele ce construct et permet de récupéré nos articles!
-        $this->getAllArticle();
-        $this->getAllShoes();
-
-
+        $this->articles=$this->getAllArticle();
 
     }
 
@@ -18,28 +15,18 @@ class Catalogue
 
     function getAllArticle(){   //On récupére nos donnees des articles!
         $reponse = selectAll();
-        while($donnees = $reponse->fetch()){
+        $donnees = $reponse->fetchAll(PDO::FETCH_ASSOC);
+        $articles = [];
+        foreach ($donnees as $catalogue){
+            $article = new Article($catalogue['name'],$catalogue['description'],$catalogue['price'],$catalogue['image'],$catalogue['weight'],$catalogue['quantity'],$catalogue['available'],$catalogue['id'] );
+            array_push($articles,$article);
 
-            $article = new Article($donnees['name'],$donnees['description'],$donnees['price'],$donnees['image'],$donnees['weight'],$donnees['quantity'],$donnees['available'],$donnees['id']);
-
-            $this->articles [$donnees['id']] = $article; // on stocke les donnees dans l'array;
 
         }
-
+        return $articles;
     }
 
-    function getAllShoes(){
-        $reponse = selectAllShoes();
-        while($donnees = $reponse->fetch()){
 
-            $chaussure = new Shoe( $donnees['pointure'],$donnees['marque'],$donnees['id']);
-            $this->articles [$donnees['id']] = $chaussure;
-
-        }
-
-
-
-    }
 }
 
 

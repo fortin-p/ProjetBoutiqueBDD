@@ -4,6 +4,7 @@ require_once "functions.php";
 require_once "database.php";
 require_once 'class_Catalogue.php';
 require_once 'class_chaussure.php';
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,18 +19,16 @@ require_once 'class_chaussure.php';
 require "header.php"
 ?>
 
-<form class="" action="basket.php" method="POST">
+<form class="card p-2 ml-5" style="width: 300px" action="basket.php" method="POST">
 
 
     <?php
+
     $catalogue = new Catalogue();
-    $nike = new Shoe(44,"nike",16);
-    $nike -> test();
-
     displayCat($catalogue);
-
-
-
+    $b = new Shoe(42,"nike");
+    $b->test();
+    displayArticle($b);
 
     ?>
     <button type="submit" class="btn btn-primary">Submit</button>

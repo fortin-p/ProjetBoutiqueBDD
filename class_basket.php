@@ -7,53 +7,46 @@ require_once 'basket.php';
 $messageErrorPrice = "";
 $articlesQuantite = [];
 class Basket{
+    Public $basket = array();
 
 
-    public function __construct(){
-$this->test();
+    public function __construct($Session){
+        $this->test();
 
     }
     function test(){
-        ?>
 
-            <?php
-        foreach ($_SESSION['panier'] as $key => $products) {
+        foreach ($_SESSION['panier'] as $products) {
 
-        $reponse = selectAll();
-
-               while($donnees = $reponse->fetchAll()){
-                   $articlesQuantite[$donnees[$key]['name']] = $donnees[$key]['price'];
-                   $quantity[$key] = $products;
-                   if ($quantity[$key] === 'on') {
-                       $quantity[$key] = 1;
-                   }
+            $bdd = connect();
+            $reponse = $bdd->query("SELECT * from products Where id=$products");
+            $donnees = $reponse->fetch(PDO::FETCH_ASSOC);
+            $article = new Article($donnees['name'],$donnees['description'],$donnees['price'],$donnees['image'],$donnees['weight'],$donnees['quantity'],$donnees['available'],$donnees['id']);
+            displayArticle($article);
 
 
-                   if (is_numeric($products) && is_numeric($donnees[$key]['price'])) {
-                       $articlesQuantite [$donnees[$key]['name']] = $donnees[$key]['price'] * $products;
-                   }
+        }
+
+    }
+
+    function add(){
 
 
-                   if ($quantity[$key] != (int)$quantity[$key]) {
-                       $messageErrorPrice = "Veuillez saisir un entier!!";
+    }
 
-                   } else {
+    function update(){
 
-                       $messageErrorPrice = "Veuillez saisir une quantité!!";
-                   }
-                  //displayItem($donnees[$key]['name'], $donnees[$key]['price'], $donnees[$key]['image'],$donnees[$key]['description'],$quantity[$key],$key,$messageErrorPrice);
-                 // $articleBasket = new Article($donnees[$key]['name'],$donnees[$key]['description'],$donnees[$key]['price'],$donnees[$key]['image'],$donnees[$key]['id'],$quantity[$key],$key,$messageErrorPrice);
-                  //$this->articles [$donnees[$key]['name']] = $articleBasket; // on stocke les donnees dans l'array;
-        ?>
 
-        <?
-             }
+    }
+
+    function delete(){
 
 
 
 
     }
 
-}
+
+
 
 }

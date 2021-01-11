@@ -9,21 +9,12 @@ require_once 'class_chaussure.php';
 require_once 'class_basket.php';
 $messageErrorPrice = "";
 $articlesQuantite = [];
-$varArticles = [];
-if (isset($_POST['articles'])) {
+
+if (isset($_POST['addarticles'])) {
 
 
-    foreach ($_POST['articles'] as $key => $value) { // supression des articles
+    $_SESSION['panier'] = $_POST['addarticles'];
 
-        if (isset($_POST['delete'][$key])) {
-            unset($_POST['articles'][$key]);
-
-        }
-
-    }
-
-    $_SESSION['panier'] = $_POST['articles'];
-    $varArticles = $_POST['articles'];
 
 } else {
     if (isset ($_SESSION['panier'])) {
@@ -49,63 +40,21 @@ if (isset($_POST['articles'])) {
 require "header.php"
 ?>
 <h1 class="text-center">PANIER</h1>
-<?php
-
-?>
 
 <form action="#" method="POST">
 
     <div class="container d-flex">
 
 
+        <div class='d-flex card p-2 ml-5 '
+             style='background: linear-gradient(0deg,#ffba08,#222,#e85d04); width: 300px;'>
+            <?php
+            $basket = new Basket($_SESSION['panier']);
 
 
-
-        <?php
-
-        foreach ($_SESSION['panier'] as $key => $products) {
 
             ?>
-            <div class='d-flex card p-2 ml-5 '
-                 style='background: linear-gradient(0deg,#ffba08,#222,#e85d04); width: 300px;'>
-            <?php
-            //$basket = new Basket();
-            //displayBask($basket);
-            //print_r($basket);
-
-
-            $reponse = selectAll();
-
-            while($donnees = $reponse->fetchAll()){
-                $articlesQuantite[$donnees[$key]['name']] = $donnees[$key]['price'];
-                $quantity[$key] = $products;
-                if ($quantity[$key] === 'on') {
-                    $quantity[$key] = 1;
-                }
-
-
-                if (is_numeric($products) && is_numeric($donnees[$key]['price'])) {
-                    $articlesQuantite [$donnees[$key]['name']] = $donnees[$key]['price'] * $products;
-                }
-
-
-                if ($quantity[$key] != (int)$quantity[$key]) {
-                    $messageErrorPrice = "Veuillez saisir un entier!!";
-
-                } else {
-
-                    $messageErrorPrice = "Veuillez saisir une quantité!!";
-                }
-                displayItem($donnees[$key]['name'], $donnees[$key]['price'], $donnees[$key]['image'],$donnees[$key]['description'],$quantity[$key],$key,$messageErrorPrice);
-
-                ?>
-                </div>
-                <?
-            }
-
-        }
-
-        ?>
+        </div>
     </div>
     <?php
 
