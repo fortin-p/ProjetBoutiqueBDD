@@ -110,9 +110,13 @@ function setQuantity(){
 }
 
 
-function createOrder(){
+function createOrder($order,$product,$quantity){
     $bdd = connect();
-    $req = $bdd->prepare('INSERT INTO `order_product` (order_id, product_id, quantity) VALUES (:order_id,:product_id ,:quantity), (:order_id,:product_id ,:quantity),(:order_id,:product_id ,:quantity);');
+    $req = $bdd->prepare('INSERT INTO order_product (order_id, product_id, quantity) VALUES (:order_id,:product_id ,:quantity);');
+    $req->bindParam(':order_id',$order);
+    $req->bindParam(':product_id',$product);
+    $req->bindParam(':quantity',$quantity);
+    $req->execute();
     return $req;
 }
 

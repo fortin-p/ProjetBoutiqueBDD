@@ -6,47 +6,33 @@ require_once 'class_Catalogue.php';
 
 class Shoe extends Article{
 
-    public $pointure;
-    public $marque;
+    private $pointure;
+    private $marque;
 
-    public function __construct($pointure,$marque){
 
-        $this->pointure=$pointure;
-        $this->marque=$marque;
-
-    }
-
-    function test(){
-        $this->name="nike";
-        $this->description="blabla";
-        $this->price=15;
-        $this->image=boeuf.png;
-        $this->weight=15;
-        $this->quantity=100;
-        $this->available=1;
-        $this->id=15;
-
+    public function __construct($name,$description,$price,$image,$weight,$quantity,$available,$id,$pointure,$marque){
+        parent::__construct($name,$description,$price,$image,$weight,$quantity,$available,$id);
+        $this->setPointure($pointure);
+        $this->setMarque($marque);
 
     }
-    function test2(){
-        $this->name="DC";
-        $this->description="blabla";
-        $this->price=15;
-        $this->image=boeuf.png;
-        $this->weight=15;
-        $this->quantity=100;
-        $this->available=1;
-        $this->id=16;
 
-
-    }
 
     public function setPointure($pointure){
 
         $this->pointure=$pointure;
 
     }
+    public function setMarque($marque){
 
+        $this->marque=$marque;
+
+    }
+    public function getMarque(){
+
+        return $this->marque;
+
+    }
 
     public function getPointure(){
 

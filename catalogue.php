@@ -19,20 +19,19 @@ require_once 'class_chaussure.php';
 require "header.php"
 ?>
 
-<form class="card p-2 ml-5" style="width: 300px" action="basket.php" method="POST">
+<form  action="basket.php" method="POST">
 
 
     <?php
 
     $catalogue = new Catalogue();
     displayCat($catalogue);
-    $b = new Shoe(42,"nike");
-    $b->test();
-    displayArticleShoes($b);
-    $c = new Shoe(44,"DC");
-    $c->test2();
-    displayArticleShoes($c);
+
+
     ?>
+
+
+
     <button type="submit" class="btn btn-primary">Submit</button>
 
 

@@ -11,11 +11,11 @@ $messageErrorPrice = "";
 $articlesQuantite = [];
 
 if (isset($_POST['addarticles'])) {
+    $_SESSION['panier'] = [];
+    foreach ($_POST['addarticles'] as $id){
 
-
-    $_SESSION['panier'] = $_POST['addarticles'];
-
-
+        $_SESSION['panier'][$id]=$id.',1';   //explode on sépare l'index id de l'index quantity que l'on met a 1
+    }
 } else {
     if (isset ($_SESSION['panier'])) {
         $varArticles = $_SESSION['panier'];
@@ -23,6 +23,43 @@ if (isset($_POST['addarticles'])) {
     }
 
 }
+$basket = new Basket($_SESSION);
+if (isset($_POST['recalculer'])){
+
+    foreach ($_POST['setQuantityArticle'] as $id => $quantity){
+
+        foreach ($basket->basket as $article){
+
+            if ($id == $article->id){
+
+                $article->setQuantityBasket((int)$quantity);
+                $_SESSION['panier'][$id]=$id.','.$article->getQuantityBasket();
+
+            }
+
+
+        }
+
+
+    }
+
+
+}
+
+
+//Creation de la commande
+//if (isset($_POST['recalculer'])) {
+//    foreach ($basket->basket as $article) {
+//        $order = 5;
+//        $product = $article->id;
+//        $quantity = $article->getQuantityBasket();;
+//        $req = createOrder($order, $product, $quantity);
+//        echo 'commande ajouté';
+//
+//    }
+//}
+
+
 
 ?>
 <!doctype html>
@@ -42,17 +79,11 @@ require "header.php"
 <h1 class="text-center">PANIER</h1>
 
 <form action="#" method="POST">
+    <?php
 
+    displayBask($basket);
 
-
-
-
-            <?php
-            $basket = new Basket($_SESSION['panier']);
-
-
-
-            ?>
+    ?>
 
     <?php
 
@@ -60,7 +91,7 @@ require "header.php"
 
     ?>
 
-    <button type="submit" class="btn btn-primary">Recalculer</button>
+    <button type="submit" name='recalculer'class="btn btn-primary">Passer Commande</button>
 </form>
 
 
