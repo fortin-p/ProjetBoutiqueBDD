@@ -73,7 +73,7 @@ function displayArticle(Article $article){
         <p> Quantité: <?php echo $article->getQuantity();?><p>
         <p> Disponible: <?php echo $article->available;?><p>
         <p> Id: <?php echo $article->id;?><p>
-            <input class='d-flex-inline' type='checkbox' class=' form-check-input' name='addarticles[]' value="<?= $article->id ?>">
+            <input class='' type='checkbox' class=' form-check-input' name='addarticles[]' value="<?= $article->id ?>">
             <?php
 
             if ($article instanceof Shoe){
@@ -125,8 +125,8 @@ function displayBasket(Article $article) // functions pour afficher tout les ite
     }
     echo "<h2 class='text-center text-white'>" . $article->description . "</h2>";
     echo "<label for='quantity'>Quantity:</label>";
-    echo "<input class='d-inline'  type='number' id='quantity' name='setQuantityArticle[".$article->id."]' value='".$article->getQuantityBasket()."'   min='1' style='width:45px'>";
-   // echo "<input class='btn btn-danger' type='submit' value='Supprimer' name='delete[]'>";?>
+    echo "<input class='d-inline'  type='number' id='quantity' name='setQuantityArticle[".$article->id."]' value='".$article->getQuantityBasket()."'   min='1' style='width:45px'>"; //value=$_SESSION['panier'][$article->id]
+    echo "<input class='btn btn-danger' type='submit' value='Supprimer' name='delete[".$article->id."]' value=''>";?>
     </div><?php
 }
 

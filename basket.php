@@ -32,7 +32,7 @@ if (isset($_POST['recalculer'])){
 
             if ($id == $article->id){
 
-                $article->setQuantityBasket((int)$quantity);
+                $article->setQuantityBasket($quantity);
                 $_SESSION['panier'][$id]=$id.','.$article->getQuantityBasket();
 
             }
@@ -83,11 +83,17 @@ require "header.php"
 
     displayBask($basket);
 
+
+    if (isset($_GET['delete'])){
+        $basket->del($_GET['delete']);
+
+    }
+
     ?>
 
     <?php
 
-    echo "le prix total est : " . basketTotal($articlesQuantite);// total des articles selectionnez
+    // echo "le prix total est : " . basketTotal($articlesQuantite);// total des articles selectionnez
 
     ?>
 

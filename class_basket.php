@@ -13,7 +13,12 @@ class Basket{
 
     public function __construct($Session){
         $this->getAll();
-
+        if(!isset($_SESSION)){
+            session_start();
+        }
+        if(!isset($_SESSION['panier'])){
+            $_SESSION['panier'] = array();
+        }
     }
     public function getAll(){
         $catalogue = new Catalogue();
@@ -29,11 +34,19 @@ class Basket{
     }
 
     public function add($id){
-        foreach($_SESSION['addarticles'] as $key_post => $value){
+        if (isset($_SESSION['panier'][$id])){
+            $_SESSION['panier'][$id]+=1;
 
+        }else{
+            $_SESSION['panier'][$id] = 1;
 
         }
 
+
+    }
+
+    public function del($id){
+       unset($_SESSION['panier'][$id]);
 
     }
 
