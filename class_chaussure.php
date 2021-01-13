@@ -10,8 +10,8 @@ class Shoe extends Article{
     private $marque;
 
 
-    public function __construct($name,$description,$price,$image,$weight,$quantity,$available,$id,$pointure,$marque){
-        parent::__construct($name,$description,$price,$image,$weight,$quantity,$available,$id);
+    public function __construct($name,$description,$price,$image,$weight,$quantity,$available,$id,$categorie,$pointure,$marque){
+        parent::__construct($name,$description,$price,$image,$weight,$quantity,$available,$id,$categorie);
         $this->setPointure($pointure);
         $this->setMarque($marque);
 

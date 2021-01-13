@@ -11,6 +11,7 @@ class Article
     protected $quantity;
     public $available;
     public $id;
+    public $categorie;
     private $quantityBasket=1;
 
 
@@ -25,7 +26,7 @@ class Article
         $this->quantityBasket = $quantityBasket;
     }
 
-    public function __construct($name,$description,$price,$image,$weight,$quantity,$available,$id)
+    public function __construct($name,$description,$price,$image,$weight,$quantity,$available,$id,$categorie)
     {
         $this->name=$name;
         $this->description=$description;
@@ -35,7 +36,7 @@ class Article
         $this->setQuantity($quantity);
         $this->available=$available;
         $this->id=$id;
-
+        $this->categorie=$categorie;
     }
 
     public function setQuantity($quantity){

@@ -19,8 +19,8 @@ require_once 'class_chaussure.php';
 require "header.php"
 ?>
 
-<form  action="basket.php" method="POST">
-
+<!--<form  action="basket.php" method="POST">-->
+<!---->
 
     <?php
 
@@ -32,12 +32,12 @@ require "header.php"
 
 
 
-    <button type="submit" class="btn btn-primary">Submit</button>
+<!--    <button type="submit" class="btn btn-primary">Submit</button>-->
+<!---->
 
 
-
-</form>
-
+<!--</form>-->
+<!---->
 
 
 

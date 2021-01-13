@@ -48,16 +48,22 @@ if (isset($_POST['recalculer'])){
 
 
 //Creation de la commande
-//if (isset($_POST['recalculer'])) {
-//    foreach ($basket->basket as $article) {
-//        $order = 5;
-//        $product = $article->id;
-//        $quantity = $article->getQuantityBasket();;
-//        $req = createOrder($order, $product, $quantity);
-//        echo 'commande ajouté';
-//
-//    }
-//}
+if (isset($_POST['recalculer'])) {
+    $total =  basketTotal($basket) ;
+    $req = createOrder($customer_id=1,$total);
+
+    foreach ($basket->basket as $article){
+        $order = 12;
+        $product = $article->id;
+        $quantity = $article->getQuantityBasket();
+        $req = createOrderProduct($order,$product,$quantity);
+
+
+
+    }
+    echo 'commande ajouté';
+
+}
 
 
 
@@ -84,20 +90,25 @@ require "header.php"
     displayBask($basket);
 
 
-    if (isset($_GET['delete'])){
-        $basket->del($_GET['delete']);
+
+
+    if (isset($_POST['delete'])) {
+
+        foreach ($_SESSION['panier'] as $key => $id ) {
+            // unset($_SESSION['panier'][$id].',1');
+
+        }
 
     }
-
     ?>
 
     <?php
 
-    // echo "le prix total est : " . basketTotal($articlesQuantite);// total des articles selectionnez
+    echo "le prix total est : " . basketTotal($basket);// total des articles selectionnez
 
     ?>
 
-    <button type="submit" name='recalculer'class="btn btn-primary">Passer Commande</button>
+    <button type="submit" name='recalculer' class="btn btn-primary">Passer Commande</button>
 </form>
 
 

@@ -48,13 +48,13 @@ function displayItem($name, $price, $image,$description) // functions pour affic
 
 
 
-function basketTotal($liste_products) //fonction cout total du panier
+function basketTotal(Basket $basket) //fonction cout total du panier
 {
 
     $total = 0;
-    foreach ($liste_products as $name => $price) {
+    foreach ($basket->basket as $article) {
 
-        $total += $price;
+        $total += $article->price * $article->getQuantityBasket();
 
     }
     return $total;
@@ -62,6 +62,7 @@ function basketTotal($liste_products) //fonction cout total du panier
 
 function displayArticle(Article $article){
     ?>
+    <form action="basket1.php" method="post">
 <div class="container d-flex flex-wrap">
 
     <div class="  card p-2 ml-5  " style="width: 300px">
@@ -73,7 +74,7 @@ function displayArticle(Article $article){
         <p> Quantité: <?php echo $article->getQuantity();?><p>
         <p> Disponible: <?php echo $article->available;?><p>
         <p> Id: <?php echo $article->id;?><p>
-            <input class='' type='checkbox' class=' form-check-input' name='addarticles[]' value="<?= $article->id ?>">
+            <button class='' type='submit' class='' name='addarticles[]' value="<?= $article->id ?>">Add to cart </button>
             <?php
 
             if ($article instanceof Shoe){
@@ -86,10 +87,10 @@ function displayArticle(Article $article){
     ?>
     </div>
 
-    </div><?php
+    </div>
+</form>
 
-
-
+    <?php
 
 }
 
@@ -129,6 +130,7 @@ function displayBasket(Article $article) // functions pour afficher tout les ite
     echo "<input class='btn btn-danger' type='submit' value='Supprimer' name='delete[".$article->id."]' value=''>";?>
     </div><?php
 }
+
 
 function displayCustomer(Customer $customer){
     ?>

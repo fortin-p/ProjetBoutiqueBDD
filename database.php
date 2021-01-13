@@ -12,7 +12,11 @@ function connect(){
 
 }
 
+function orderid(){
+    $bdd = connect();
+    $reponse = $bdd->query('SELECT id from orders');
 
+}
 
 function selectAll(){
     $bdd = connect();
@@ -22,7 +26,7 @@ function selectAll(){
 }
 function selectAllShoes(){
     $bdd = connect();
-    $reponse = $bdd->query('SELECT * from chaussures');
+    $reponse = $bdd->query('SELECT * from products WHERE pointure');
     return $reponse;
 
 }
@@ -110,7 +114,7 @@ function setQuantity(){
 }
 
 
-function createOrder($order,$product,$quantity){
+function createOrderProduct($order,$product,$quantity){
     $bdd = connect();
     $req = $bdd->prepare('INSERT INTO order_product (order_id, product_id, quantity) VALUES (:order_id,:product_id ,:quantity);');
     $req->bindParam(':order_id',$order);
@@ -119,6 +123,21 @@ function createOrder($order,$product,$quantity){
     $req->execute();
     return $req;
 }
+
+function createOrder($customer_id=10,$total){
+    $bdd = connect();
+    $number=rand(5, 100);
+    $req = $bdd->prepare('INSERT INTO orders (number,total, date, customer_id) VALUES (:number,:total, now(),:customer_id);');
+    $req->bindParam(':number',$number, PDO::PARAM_INT);
+    $req->bindParam(':total',$total);
+    $req->bindParam(':customer_id',$customer_id, PDO::PARAM_INT);
+    $req->execute();
+return $req;
+
+
+}
+
+
 
 
 
