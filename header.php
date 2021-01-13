@@ -14,7 +14,7 @@
                             <a class="nav-link active" aria-current="page" href="catalogue.php">Catalogue</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="chaussure.php">chaussure</a>
+                            <a class="nav-link active"  href="Chaussures.php">chaussure</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="basket.php">Panier</a>

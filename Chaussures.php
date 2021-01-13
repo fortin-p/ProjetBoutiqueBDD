@@ -4,8 +4,7 @@ require_once "functions.php";
 require_once "database.php";
 require_once 'class_Catalogue.php';
 require_once 'class_chaussure.php';
-$catalogue = new Catalogue();
-displayCat($catalogue);
+
 
 ?>
 <!DOCTYPE html>
@@ -17,9 +16,12 @@ displayCat($catalogue);
 
 </head>
 <body>
-
 <?php
-echo 'coucouc';
+require "header.php";
+$shoe = new Catalogue();
+$shoe->getArticlesShoes();
+displayShoe($shoe);
+
 ?>
 <script src="bootstrap/jquery-3.5.1.min.js"></script>
 <script src="bootstrap/bootstrap.bundle.min.js"></script>

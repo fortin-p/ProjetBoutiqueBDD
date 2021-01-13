@@ -96,12 +96,20 @@ function displayArticle(Article $article){
 
 function displayCat(Catalogue $catalogue)
 {
-    foreach ($catalogue -> articles as $article){
+    foreach ($catalogue -> getArticles() as $article){
         displayArticle($article);
 
 
     }
 
+
+}
+
+function displayShoe(Catalogue $catalogue){
+    foreach ($catalogue ->getArticlesShoes() as $shoe){
+        displayArticle($shoe);
+
+    }
 
 
 

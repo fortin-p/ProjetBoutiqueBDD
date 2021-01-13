@@ -5,11 +5,13 @@ require_once 'class_chaussure.php';
 class Catalogue
 {
 
-    public $articles;
-    public $articlesShoes;
+    private $articles;
+
+
+    private $articlesShoes;
     public function __construct(){  //new catalogue appele ce construct et permet de récupéré nos articles!
         $this->articles=$this->getAllArticle();
-        //$this->articles=$this->getAllShoe();
+        $this->articlesShoes=$this->getAllShoe();
     }
 
 
@@ -39,11 +41,42 @@ return $articlesShoes;
 
     }
 
+    /**
+     * @return array
+     */
+    public function getArticlesShoes(): array
+    {
+        return $this->articlesShoes;
+    }
+
+    /**
+     * @param array $articlesShoes
+     */
+    public function setArticlesShoes(array $articlesShoes)
+    {
+        $this->articlesShoes = $articlesShoes;
+    }
+
 
     public function getArticleById($id):Article{
 
         return $this->articles[$id];
 
+    }
+    /**
+     * @return array
+     */
+    public function getArticles(): array
+    {
+        return $this->articles;
+    }
+
+    /**
+     * @param array $articles
+     */
+    public function setArticles(array $articles)
+    {
+        $this->articles = $articles;
     }
 
 }
