@@ -11,6 +11,7 @@ $messageErrorPrice = "";
 $articlesQuantite = [];
 
 if (isset($_POST['addarticles'])) {
+
     $_SESSION['panier'] = [];
     foreach ($_POST['addarticles'] as $id){
 

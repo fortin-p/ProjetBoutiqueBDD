@@ -60,35 +60,37 @@ function basketTotal(Basket $basket) //fonction cout total du panier
 }
 
 function displayArticle(Article $article){
+
     ?>
-<div class="container d-flex flex-wrap">
+    <form action="basket.php" method="post">
 
-    <div class="  card p-2 ml-5  " style="width: 300px">
-        <p > Nom du produit : <?php echo $article->name ;?></p>
-        <p> Description du produit : <?php echo $article->description;?></p>
-        <p> Prix du produit :<?php echo $article->price;?><p>
-            <?php    echo "<img class='card-img-top' src='". $article->image . "' alt=''/>";?>
-        <p> Poids: <?php echo $article->weight;?><p>
-        <p> Quantité: <?php echo $article->getQuantity();?><p>
-        <p> Disponible: <?php echo $article->available;?><p>
-        <p> Id: <?php echo $article->id;?><p>
-            <input class='' type='checkbox' class=' form-check-input' name='addarticles[]' value="<?= $article->id ?>">
-            <?php
 
-            if ($article instanceof Shoe){
-            ?>
-        <p> Pointure: <?php  echo $article->getpointure();?></p>
-        <p> Marque : <?php echo $article->getMarque();?></p>
+
+        <div class="container flex-column-reverse">
+            <div class="card" style="width: 18rem;">
+                <?php    echo "<img class='card-img-top' src='". $article->image . "' alt=''/>";?>
+                <div class="card-body"><?php
+                    echo  "<h5 class='card-title text-center'> ". $article->name." </h5> ";
+                    echo  "<p class='card-text'>" .$article->description ."</p>";
+                    echo "<p> prix du produit :" .$article->price."</p>";?>
+                    <button  type='submit' class='' name='addarticles[]' value="<?= $article->id ?>">Add to cart </button>
+                    <?php
+
+                    if ($article instanceof Shoe){
+                        ?>
+                        <p> Pointure: <?php  echo $article->getpointure();?></p>
+                        <p> Marque : <?php echo $article->getMarque();?></p>
+                        <?php
+
+                    }
+                    ?>
+                </div>
+            </div>
+        </div>
+
+    </form>
+
     <?php
-
-    }
-    ?>
-    </div>
-
-    </div><?php
-
-
-
 
 }
 
