@@ -9,27 +9,27 @@ require_once 'class_Catalogue.php';
 class Basket{
     Public $basket = [];
     public function __construct($Session){
-        $this->getAll();
+        //$this->getAll();
 
     }
 
-    public function getAll(){
-        $catalogue = new Catalogue();
+//    public function getAll(){
+//        $catalogue = new Catalogue();
 
-        foreach ($_SESSION['panier'] as $value) {
-            $explode = explode(',',$value); // Separateur de string
-            $article= $catalogue->getArticleById($explode[0]); // on récupére a l'index 0 = l'id
-            $article->setQuantityBasket($explode[1]); // a l'index 1 qui vaut a la quantity
-            $this->basket[$explode[0]] = $article; // on stocke dans le basket
-        }
+//        foreach ($_SESSION['panier'] as $value) {
+//            $explode = explode(',',$value); // Separateur de string
+//            $article= $catalogue->getArticleById($explode[0]); // on récupére a l'index 0 = l'id
+//            $article->setQuantityBasket($explode[1]); // a l'index 1 qui vaut a la quantity
+//            $this->basket[$explode[0]] = $article; // on stocke dans le basket
+//        }
+//
+//    }
 
-    }
+  //  public function add($id){
 
-    public function add($id){
-
-            $this->basket[] = $id;
-
-    }
+//            $this->basket[] = $id;
+//
+//    }
 
 //    public function update($id,$quantity){
 //        foreach ($this->basket as $key => $item){

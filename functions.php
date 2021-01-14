@@ -17,7 +17,7 @@ function basketTotal(Basket $basket) //fonction cout total du panier
 
 function displayArticle(Article $article){
     ?>
-    <form action="basket.php" method="post">
+    <form action="basket1.php" method="post">
 <div class="container d-flex flex-wrap">
 
     <div class="  card p-2 ml-5  " style="width: 300px">
