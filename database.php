@@ -110,7 +110,10 @@ function setQuantity(){
 }
 
 
-function createOrder($order,$product,$quantity){
+
+
+
+function createOrderProduct($order,$product,$quantity){
     $bdd = connect();
     $req = $bdd->prepare('INSERT INTO order_product (order_id, product_id, quantity) VALUES (:order_id,:product_id ,:quantity);');
     $req->bindParam(':order_id',$order);
@@ -120,6 +123,25 @@ function createOrder($order,$product,$quantity){
     return $req;
 }
 
+function createOrder($customer_id=10,$total,$basket){
+    $bdd = connect();
+    $number=rand(5, 100);
+    $req = $bdd->prepare('INSERT INTO orders (number,total, date, customer_id) VALUES (:number,:total, now(),:customer_id);');
+    $req->bindParam(':number',$number, PDO::PARAM_INT);
+    $req->bindParam(':total',$total);
+    $req->bindParam(':customer_id',$customer_id, PDO::PARAM_INT);
+    $req->execute();
+    $orderid = $bdd->lastInsertId();
+    foreach ($basket->basket as $article) {
+        $order = $orderid;
+        $product = $article->id;
+        $quantity = $article->getQuantityBasket();
+        $req = createOrderProduct($order, $product, $quantity);
+    }
+    return $req;
+
+
+}
 
 
 

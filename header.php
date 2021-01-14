@@ -1,4 +1,12 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
+    <title>Boutique</title>
+    <meta charset="utf-8"/>
+</head>
+<body>
 <header>
     <div class=" jumbotron" style="background: linear-gradient(0deg,#023e8a,#c77dff,#3c096c);">
         <h1 class="font-weight-bold text-center display-4">E-coPef</h1>
@@ -28,3 +36,7 @@
         </nav>
     </div>
 </header>
+<script src="bootstrap/jquery-3.5.1.min.js"></script>
+<script src="bootstrap/bootstrap.bundle.min.js"></script>
+</body>
+</html>

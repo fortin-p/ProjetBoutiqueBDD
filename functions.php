@@ -47,14 +47,13 @@ function displayItem($name, $price, $image,$description) // functions pour affic
 
 
 
-
-function basketTotal($liste_products) //fonction cout total du panier
+function basketTotal(Basket $basket) //fonction cout total du panier
 {
 
     $total = 0;
-    foreach ($liste_products as $name => $price) {
+    foreach ($basket->basket as $article) {
 
-        $total += $price;
+        $total += $article->price * $article->getQuantityBasket();
 
     }
     return $total;

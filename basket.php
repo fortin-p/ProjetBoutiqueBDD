@@ -48,31 +48,18 @@ if (isset($_POST['recalculer'])){
 
 
 //Creation de la commande
-//if (isset($_POST['recalculer'])) {
-//    foreach ($basket->basket as $article) {
-//        $order = 5;
-//        $product = $article->id;
-//        $quantity = $article->getQuantityBasket();;
-//        $req = createOrder($order, $product, $quantity);
-//        echo 'commande ajouté';
-//
-//    }
-//}
+if (isset($_POST['recalculer'])) {
+    $total =  basketTotal($basket) ;
+    $req = createOrder($customer_id=1,$total,$basket);
+    }
+    echo 'commande ajouté';
+
+?>
 
 
 
 ?>
-<!doctype html>
-<html lang="en">
-<head>
-    <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Basket</title>
-</head>
-<body>
+
 <?php
 require "header.php"
 ?>
@@ -93,7 +80,7 @@ require "header.php"
 
     <?php
 
-    // echo "le prix total est : " . basketTotal($articlesQuantite);// total des articles selectionnez
+     echo "le prix total est : " . basketTotal($basket);// total des articles selectionnez
 
     ?>
 
@@ -101,7 +88,3 @@ require "header.php"
 </form>
 
 
-<script src="bootstrap/jquery-3.5.1.min.js"></script>
-<script src="bootstrap/bootstrap.bundle.min.js"></script>
-</body>
-</html>
