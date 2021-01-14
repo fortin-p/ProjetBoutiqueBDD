@@ -9,8 +9,6 @@ require_once 'class_chaussure.php';
 
 require "header.php";
 $shoe = new Catalogue();
-$shoe->getArticlesShoes();
-
 displayShoe($shoe);
 
 ?>

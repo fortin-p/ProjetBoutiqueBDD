@@ -11,7 +11,11 @@ $messageErrorPrice = "";
 $articlesQuantite = [];
 
 if (isset($_POST['addarticles'])) {
-    $_SESSION['panier'] = [];
+    if (!isset($_SESSION['panier'])){
+        $_SESSION['panier'] = [];
+
+    }
+
     foreach ($_POST['addarticles'] as $id){
 
         $_SESSION['panier'][$id]=$id.',1';   //explode on sépare l'index id de l'index quantity que l'on met a 1

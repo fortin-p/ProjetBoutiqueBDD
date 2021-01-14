@@ -10,15 +10,17 @@ class Catalogue
     private $articlesfruits;
 
     public function __construct(){  //new catalogue appele ce construct et permet de récupéré nos articles!
-        $this->articles=$this->getAllArticle();
-        $this->articlesShoes=$this->getAllShoe();
-        $this->articlesfruits=$this->getAllFruits();
+
+        $this->articles = $this->getAllArticle();
+        $this->articlesShoes = $this->getAllShoe();
+        $this->articlesfruits = $this->getAllFruits();
 
     }
 
 
 
-    public function getAllArticle(){   //On récupére nos donnees des articles!
+    public function getAllArticle(): array
+    {   //On récupére nos donnees des articles!
         $reponse = selectAll();
         $donnees = $reponse->fetchAll(PDO::FETCH_ASSOC);
         $articles = [];
@@ -31,7 +33,8 @@ class Catalogue
 
         return $articles;
     }
-    public function getAllShoe(){
+    public function getAllShoe(): array
+    {
         $reponse = selectAllShoes();
         $donnees = $reponse->fetchAll(PDO::FETCH_ASSOC);
         $articlesShoes = [];
@@ -43,7 +46,8 @@ class Catalogue
 
     }
 
-    public function getAllFruits(){
+    public function getAllFruits(): array
+    {
         $reponse = selectAllFruits();
         $donnees = $reponse->fetchAll(PDO::FETCH_ASSOC);
         $articlefruits = [];
@@ -62,15 +66,6 @@ class Catalogue
         return $this->articlesShoes;
     }
 
-    /**
-     * @param array $articlesShoes
-     */
-    public function setArticlesShoes(array $articlesShoes)
-    {
-        $this->articlesShoes = $articlesShoes;
-    }
-
-
     public function getArticleById($id):Article{
 
         return $this->articles[$id];
@@ -85,13 +80,6 @@ class Catalogue
     }
 
     /**
-     * @param array $articles
-     */
-    public function setArticles(array $articles)
-    {
-        $this->articles = $articles;
-    }
-    /**
      * @return array
      */
     public function getArticlesfruits(): array
@@ -99,13 +87,6 @@ class Catalogue
         return $this->articlesfruits;
     }
 
-    /**
-     * @param array $articlesfruits
-     */
-    public function setArticlesfruits(array $articlesfruits)
-    {
-        $this->articlesfruits = $articlesfruits;
-    }
 }
 
 

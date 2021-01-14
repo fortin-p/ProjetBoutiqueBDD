@@ -17,7 +17,6 @@ require "header.php"
     <?php
 
     $catalogue = new Catalogue();
-    $catalogue->getArticles();
     displayCat($catalogue);
 
 

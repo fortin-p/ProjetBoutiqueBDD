@@ -13,8 +13,6 @@ class Basket{
 
     }
 
-
-
     public function getAll(){
         $catalogue = new Catalogue();
 
@@ -27,28 +25,28 @@ class Basket{
 
     }
 
-    public function add($id){
-        if (isset($this->basket[$id])){
-            $this->basket[$id]+=1;
-
-        }else{
-            $this->basket[$id] = 1;
-
-        }
-
-
-    }
-    public function update($id){
-        $this->basket[$id] += 1;
-
-
-    }
-
-    public function del($id){
-        if (isset($_POST['delete']))
-            unset($_SESSION['panier'][$id]);
-
-    }
+//    public function add($id){
+//        if (isset($this->basket[$id])){
+//            $this->basket[$id]+=1;
+//
+//        }else{
+//            $this->basket[$id] = 1;
+//
+//        }
+//
+//
+//    }
+//    public function update($id){
+//        $this->basket[$id] += 1;
+//
+//
+//    }
+//
+//    public function del($id){
+//        if (isset($_POST['delete']))
+//            unset($_SESSION['panier'][$id]);
+//
+//    }
 
 
 //

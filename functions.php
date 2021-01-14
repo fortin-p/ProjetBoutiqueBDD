@@ -29,7 +29,7 @@ function displayArticle(Article $article){
         <p> Quantité: <?php echo $article->getQuantity();?><p>
         <p> Disponible: <?php echo $article->available;?><p>
         <p> Id: <?php echo $article->id;?><p>
-            <button class='' type='submit' class='' name='addarticles[]' value="<?= $article->id ?>">Add to cart </button>
+            <button  type='submit' class='' name='addarticles[]' value="<?= $article->id ?>">Add to cart </button>
             <?php
 
             if ($article instanceof Shoe){
@@ -90,7 +90,7 @@ function displayBask(Basket $basket)
 function displayBasket(Article $article) // functions pour afficher tout les items
 {
     ?>
-    <div class="container card d-flex"style='background: linear-gradient(0deg,#ffba08,#222,#e85d04); width: 300px;'><?php
+    <div class="container card d-flex" style='background: linear-gradient(0deg,#ffba08,#222,#e85d04); width: 300px;'><?php
     echo "<img class='card-img-top' src='" . $article->image . "' alt=''/>";
     echo "<h1 class='text-center text-white'>" . $article->name . "</h1>";
     if (is_numeric($article->getQuantity())) {

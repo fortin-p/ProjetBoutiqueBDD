@@ -7,5 +7,4 @@ require_once 'class_chaussure.php';
 require "header.php";
 
 $fruits = new Catalogue();
-$fruits->getArticlesfruits();
 displayFruits($fruits);
