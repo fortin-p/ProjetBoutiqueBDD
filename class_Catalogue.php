@@ -6,6 +6,8 @@ class Catalogue
 {
 
     private $articles;
+
+
     private $articlesShoes;
     private $articlesfruits;
 
@@ -50,7 +52,53 @@ class Catalogue
         return $articlefruits;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getArticles()
+    {
+        return $this->articles;
+    }
 
+    /**
+     * @param mixed $articles
+     */
+    public function setArticles($articles)
+    {
+        $this->articles = $articles;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getArticlesShoes()
+    {
+        return $this->articlesShoes;
+    }
+
+    /**
+     * @param mixed $articlesShoes
+     */
+    public function setArticlesShoes($articlesShoes)
+    {
+        $this->articlesShoes = $articlesShoes;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getArticlesfruits()
+    {
+        return $this->articlesfruits;
+    }
+
+    /**
+     * @param mixed $articlesfruits
+     */
+    public function setArticlesfruits($articlesfruits)
+    {
+        $this->articlesfruits = $articlesfruits;
+    }
 
 
 }

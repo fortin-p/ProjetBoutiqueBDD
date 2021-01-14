@@ -7,35 +7,40 @@ require_once "database.php";
 require_once 'class_Catalogue.php';
 require_once 'class_chaussure.php';
 require_once 'class_basket.php';
-$messageErrorPrice = "";
-$articlesQuantite = [];
 
 $basket = new Basket();
-    if (isset($_POST['addarticles'])){
-        if (!isset($_SESSION['panier'])){
-            foreach ($basket->basket as $article){
-                $basket->setBasket();
+if (isset($_POST['addarticles'])){
+if (!isset($_SESSION['panier'])) {
+    foreach ($basket->basket as $article) {
+        $basket->setBasket();
 
-            }
-
-        }
-        foreach ($_POST['addarticles'] as $id){
-            $basket->add($id);
-            ?><pre><?php
-            var_dump($basket);?>
-            </pre><?php
-            echo 'id :'. $id;
-        }
-
-displayBask($basket);
-
-
-
-
-
-
-
+    }
 }
+}
+foreach ($_POST['addarticles'] as $id){
+    $basket->add($id);
+    ?><pre><?php
+    var_dump($basket);?>
+    </pre><?php
+    echo 'id :'. $id;
+}
+var_dump($basket);
+
+
+
+
+
+
+
+//displayBask($basket);
+
+
+
+
+
+
+
+
 
 
 

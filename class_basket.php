@@ -14,6 +14,15 @@ class Basket{
     }
 
     public function getAll(){
+        if (isset($_POST['addarticles'])){
+            $basket[] = $_POST['addarticles'];
+            foreach ($_POST['addarticles'] as $key){
+                $basket->setBasket($_POST['addarticles']);
+            }
+
+
+        }
+
 
 
 

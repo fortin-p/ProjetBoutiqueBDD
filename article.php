@@ -35,7 +35,7 @@ class Article
         $this->price=$price;
         $this->image=$image;
         $this->weight=$weight;
-        $this->setQuantity(14);
+        $this->getQuantity();
         $this->available=$available;
         $this->id=$id;
         $this->categorie=$categorie;

@@ -12,7 +12,7 @@ $basket = new Basket();
 
 if (isset($_SESSION['panier']))
 {
-    $basket->setBasket($_SESSION['panier']);
+    //$basket->setBasket($_SESSION['panier']);
     displayBask($basket);
 var_dump($basket);
 
