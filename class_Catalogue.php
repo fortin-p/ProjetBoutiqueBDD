@@ -6,12 +6,14 @@ class Catalogue
 {
 
     private $articles;
-
-
     private $articlesShoes;
+    private $articlesfruits;
+
     public function __construct(){  //new catalogue appele ce construct et permet de récupéré nos articles!
         $this->articles=$this->getAllArticle();
         $this->articlesShoes=$this->getAllShoe();
+        $this->articlesfruits=$this->getAllFruits();
+
     }
 
 
@@ -37,8 +39,19 @@ class Catalogue
             $Shoe = new Shoe($Shoe['name'],$Shoe['description'],$Shoe['price'],$Shoe['image'],$Shoe['weight'],$Shoe['quantity'],$Shoe['available'],$Shoe['id'],$Shoe['categorie_id'],$Shoe['pointure'],$Shoe['marque']);
             array_push($articlesShoes,$Shoe);
         }
-return $articlesShoes;
+        return $articlesShoes;
 
+    }
+
+    public function getAllFruits(){
+        $reponse = selectAllFruits();
+        $donnees = $reponse->fetchAll(PDO::FETCH_ASSOC);
+        $articlefruits = [];
+        foreach ($donnees as $Fruit){
+            $fruits = new Article($Fruit['name'],$Fruit['description'],$Fruit['price'],$Fruit['image'],$Fruit['weight'],$Fruit['quantity'],$Fruit['available'],$Fruit['id'],$Fruit['categorie_id']);
+            array_push($articlefruits,$fruits);
+        }
+        return $articlefruits;
     }
 
     /**
@@ -78,7 +91,21 @@ return $articlesShoes;
     {
         $this->articles = $articles;
     }
+    /**
+     * @return array
+     */
+    public function getArticlesfruits(): array
+    {
+        return $this->articlesfruits;
+    }
 
+    /**
+     * @param array $articlesfruits
+     */
+    public function setArticlesfruits(array $articlesfruits)
+    {
+        $this->articlesfruits = $articlesfruits;
+    }
 }
 
 

@@ -26,6 +26,8 @@ class Article
         $this->quantityBasket = $quantityBasket;
     }
 
+
+
     public function __construct($name,$description,$price,$image,$weight,$quantity,$available,$id,$categorie)
     {
         $this->name=$name;
@@ -33,7 +35,7 @@ class Article
         $this->price=$price;
         $this->image=$image;
         $this->weight=$weight;
-        $this->setQuantity($quantity);
+        $this->setQuantity(14);
         $this->available=$available;
         $this->id=$id;
         $this->categorie=$categorie;

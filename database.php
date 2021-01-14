@@ -30,6 +30,13 @@ function selectAllShoes(){
     return $reponse;
 
 }
+
+function selectAllFruits(){
+    $bdd = connect();
+    $reponse = $bdd->query('SELECT * from products WHERE categorie_id=1 ');
+    return $reponse;
+
+}
 function selectAllClothes(){
     $bdd = connect();
     $reponse = $bdd->query('SELECT * from vetement');
@@ -124,7 +131,7 @@ function createOrderProduct($order,$product,$quantity){
     return $req;
 }
 
-function createOrder($customer_id=10,$total){
+function createOrder($customer_id=10,$total,$basket){
     $bdd = connect();
     $number=rand(5, 100);
     $req = $bdd->prepare('INSERT INTO orders (number,total, date, customer_id) VALUES (:number,:total, now(),:customer_id);');
@@ -132,7 +139,14 @@ function createOrder($customer_id=10,$total){
     $req->bindParam(':total',$total);
     $req->bindParam(':customer_id',$customer_id, PDO::PARAM_INT);
     $req->execute();
-return $req;
+    $orderid = $bdd->lastInsertId();
+    foreach ($basket->basket as $article) {
+        $order = $orderid;
+        $product = $article->id;
+        $quantity = $article->getQuantityBasket();
+        $req = createOrderProduct($order, $product, $quantity);
+    }
+    return $req;
 
 
 }

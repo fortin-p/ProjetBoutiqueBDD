@@ -4,13 +4,8 @@ require_once "functions.php";
 require_once "database.php";
 require_once 'class_Catalogue.php';
 require_once 'class_chaussure.php';
-
-
-
 require "header.php";
-$shoe = new Catalogue();
-$shoe->getArticlesShoes();
 
-displayShoe($shoe);
-
-?>
+$fruits = new Catalogue();
+$fruits->getArticlesfruits();
+displayFruits($fruits);

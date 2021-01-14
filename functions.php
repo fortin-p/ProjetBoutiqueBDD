@@ -3,51 +3,6 @@ include_once "article.php";
 require_once 'class_chaussure.php';
 
 
-function displayItem1()                     // fonction pour afficher article1
-{
-
-    echo "<img class='card-img-top' src='" . $article1["picture"] . "'alt=''/>";
-    echo "<h1 class='card-title text-center text-white'>" . $article1["name"] . "</h1>";
-    echo "<h2 class='card-text text-center text-white'>" . $article1["price"] . "</h2>";
-
-}
-
-function displayItem2()                     // fonction pour afficher article2
-{
-
-    echo "<img class='card-img-top' src='" . $article2["picture"] . "'alt=''/>";
-    echo "<h1 class='card-title text-center text-white'>" . $article2["name"] . "</h1>";
-    echo "<h2 class='card-text text-center text-white'>" . $article2["price"] . "</h2>";
-
-}
-
-function displayItem3()                     // fonction pour afficher article3
-{
-
-    echo "<img class='card-img-top' src='" . $article3["picture"] . "' alt='' />";
-    echo "<h1 class='card-title text-center text-white'>" . $article3["name"] . "</h1>";
-    echo "<h2 class='card-text text-center text-white'>" . $article3["price"] . "</h2>";
-
-}
-
-function displayItem($name, $price, $image,$description) // functions pour afficher tout les items
-{
-    echo "<img class='card-img-top' src='" . $image . "' alt=''/>";
-    echo "<h1 class='text-center text-white'>" . $name . "</h1>";
-
-    echo "<h2 class='text-center text-white'>" . $price . "$</h2>";
-
-    echo "<h2 class='text-center text-white'>" . $description . "</h2>";
-    echo "<label for='quantity'>Quantity:</label>";
-
-
-
-
-}
-
-
-
-
 function basketTotal(Basket $basket) //fonction cout total du panier
 {
 
@@ -62,7 +17,7 @@ function basketTotal(Basket $basket) //fonction cout total du panier
 
 function displayArticle(Article $article){
     ?>
-    <form action="basket1.php" method="post">
+    <form action="basket.php" method="post">
 <div class="container d-flex flex-wrap">
 
     <div class="  card p-2 ml-5  " style="width: 300px">
@@ -96,7 +51,7 @@ function displayArticle(Article $article){
 
 function displayCat(Catalogue $catalogue)
 {
-    foreach ($catalogue -> getArticles() as $article){
+    foreach ($catalogue->getArticles() as $article){
         displayArticle($article);
 
 
@@ -106,8 +61,17 @@ function displayCat(Catalogue $catalogue)
 }
 
 function displayShoe(Catalogue $catalogue){
-    foreach ($catalogue ->getArticlesShoes() as $shoe){
+    foreach ($catalogue->getArticlesShoes() as $shoe){
         displayArticle($shoe);
+
+    }
+
+
+
+}
+function displayFruits(Catalogue $catalogue){
+    foreach ($catalogue->getArticlesfruits() as $fruit){
+        displayArticle($fruit);
 
     }
 
@@ -116,7 +80,7 @@ function displayShoe(Catalogue $catalogue){
 }
 function displayBask(Basket $basket)
 {
-    foreach ($basket -> basket as $newBasket){
+    foreach ($basket->basket as $newBasket){
         displayBasket($newBasket);
 
     }
@@ -156,7 +120,7 @@ function displayCustomer(Customer $customer){
 }
 
 function displayList(ListCustomer $listcustomer){
-    foreach ($listcustomer -> customers as $customer){
+    foreach ($listcustomer->customers as $customer){
         displayCustomer($customer);
 
     }

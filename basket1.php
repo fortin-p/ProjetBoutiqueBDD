@@ -9,15 +9,12 @@ require_once 'class_chaussure.php';
 require_once 'class_basket.php';
 
 $basket = new Basket();
-var_dump($basket);
+
 if (isset($_SESSION['panier']))
 {
-  foreach ($_POST['addarticles'] as $article => $value){
-
-
-  }
-
+    $basket->setBasket($_SESSION['panier']);
+    displayBask($basket);
+var_dump($basket);
 
 }
 
-displayBask($basket);
