@@ -11,14 +11,12 @@ $messageErrorPrice = "";
 $articlesQuantite = [];
 
 if (isset($_POST['addarticles'])) {
-    if (!isset($_SESSION['panier'])){
-        $_SESSION['panier'] = [];
 
-    }
+        $_SESSION['panier'] = [];
 
     foreach ($_POST['addarticles'] as $id){
 
-        $_SESSION['panier'][$id]=$id.',1';   //explode on sépare l'index id de l'index quantity que l'on met a 1
+        $_SESSION['panier'][$id]=$id.',1';   //explode on sépare l'index0 id de l'index1 quantity que l'on met a 1
     }
 }
 $basket = new Basket($_SESSION);
@@ -45,10 +43,11 @@ if (isset($_POST['recalculer'])){
 //if (isset($_POST['recalculer'])) {
 //    $total =  basketTotal($basket) ;
 //    $req = createOrder($customer_id=1,$total,$basket);
-//    }
 //    echo 'commande ajouté';
-//
-//?>
+//    }
+
+
+?>
 
 <?php
 require "header.php"
@@ -60,8 +59,6 @@ require "header.php"
 
     displayBask($basket);
 
-
-
     ?>
 
     <?php
@@ -71,3 +68,4 @@ require "header.php"
     ?>
 
     <button type="submit" name='recalculer' class="btn btn-primary">Passer Commande</button>
+</form>

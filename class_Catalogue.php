@@ -9,11 +9,7 @@ class Catalogue
     private $articlesShoes;
     private $articlesfruits;
 
-    public function __construct(){  //new catalogue appele ce construct et permet de récupéré nos articles!
-
-        $this->articles = $this->getAllArticle();
-        $this->articlesShoes = $this->getAllShoe();
-        $this->articlesfruits = $this->getAllFruits();
+    public function __construct(){
 
     }
 
@@ -58,34 +54,13 @@ class Catalogue
         return $articlefruits;
     }
 
-    /**
-     * @return array
-     */
-    public function getArticlesShoes(): array
-    {
-        return $this->articlesShoes;
-    }
 
     public function getArticleById($id):Article{
 
         return $this->articles[$id];
 
     }
-    /**
-     * @return array
-     */
-    public function getArticles(): array
-    {
-        return $this->articles;
-    }
 
-    /**
-     * @return array
-     */
-    public function getArticlesfruits(): array
-    {
-        return $this->articlesfruits;
-    }
 
 }
 

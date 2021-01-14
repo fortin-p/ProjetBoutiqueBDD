@@ -16,34 +16,35 @@ function basketTotal(Basket $basket) //fonction cout total du panier
 }
 
 function displayArticle(Article $article){
+
     ?>
     <form action="basket.php" method="post">
-<div class="container d-flex flex-wrap">
 
-    <div class="  card p-2 ml-5  " style="width: 300px">
-        <p > Nom du produit : <?php echo $article->name ;?></p>
-        <p> Description du produit : <?php echo $article->description;?></p>
-        <p> Prix du produit :<?php echo $article->price;?><p>
-            <?php    echo "<img class='card-img-top' src='". $article->image . "' alt=''/>";?>
-        <p> Poids: <?php echo $article->weight;?><p>
-        <p> Quantité: <?php echo $article->getQuantity();?><p>
-        <p> Disponible: <?php echo $article->available;?><p>
-        <p> Id: <?php echo $article->id;?><p>
-            <button  type='submit' class='' name='addarticles[]' value="<?= $article->id ?>">Add to cart </button>
-            <?php
 
-            if ($article instanceof Shoe){
-            ?>
-        <p> Pointure: <?php  echo $article->getpointure();?></p>
-        <p> Marque : <?php echo $article->getMarque();?></p>
-    <?php
 
-    }
-    ?>
-    </div>
+        <div class="container flex-column-reverse">
+            <div class="card" style="width: 18rem;">
+                <?php    echo "<img class='card-img-top' src='". $article->image . "' alt=''/>";?>
+                <div class="card-body"><?php
+                    echo  "<h5 class='card-title text-center'> ". $article->name." </h5> ";
+                    echo  "<p class='card-text'>" .$article->description ."</p>";
+                    echo "<p> prix du produit :" .$article->price."</p>";?>
+                    <button  type='submit' class='' name='addarticles[]' value="<?= $article->id ?>">Add to cart </button>
+                    <?php
 
-    </div>
-</form>
+                    if ($article instanceof Shoe){
+                        ?>
+                        <p> Pointure: <?php  echo $article->getpointure();?></p>
+                        <p> Marque : <?php echo $article->getMarque();?></p>
+                        <?php
+
+                    }
+                    ?>
+                </div>
+            </div>
+        </div>
+
+    </form>
 
     <?php
 
@@ -51,7 +52,7 @@ function displayArticle(Article $article){
 
 function displayCat(Catalogue $catalogue)
 {
-    foreach ($catalogue->getArticles() as $article){
+    foreach ($catalogue->getAllArticle() as $article){
         displayArticle($article);
 
 
@@ -61,7 +62,7 @@ function displayCat(Catalogue $catalogue)
 }
 
 function displayShoe(Catalogue $catalogue){
-    foreach ($catalogue->getArticlesShoes() as $shoe){
+    foreach ($catalogue->getAllShoe() as $shoe){
         displayArticle($shoe);
 
     }
@@ -70,7 +71,7 @@ function displayShoe(Catalogue $catalogue){
 
 }
 function displayFruits(Catalogue $catalogue){
-    foreach ($catalogue->getArticlesfruits() as $fruit){
+    foreach ($catalogue->getAllFruits() as $fruit){
         displayArticle($fruit);
 
     }
@@ -127,6 +128,11 @@ function displayList(ListCustomer $listcustomer){
 
 
 }
+
+?>
+    <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
+    <script src="bootstrap/jquery-3.5.1.min.js"></script>
+    <script src="bootstrap/bootstrap.bundle.min.js"></script><?php
 
 
 
