@@ -13,8 +13,6 @@ class Catalogue
 
     }
 
-
-
     public function getAllArticle(): array
     {   //On récupére nos donnees des articles!
         $reponse = selectAll();
@@ -25,8 +23,6 @@ class Catalogue
             $article = new Article($catalogue['name'],$catalogue['description'],$catalogue['price'],$catalogue['image'],$catalogue['weight'],$catalogue['quantity'],$catalogue['available'],$catalogue['id'],$catalogue['categorie_id']);
             $articles[$catalogue['id']] = $article;
         }
-
-
         return $articles;
     }
     public function getAllShoe(): array
@@ -55,11 +51,6 @@ class Catalogue
     }
 
 
-    public function getArticleById($id):Article{
-
-        return $this->articles[$id];
-
-    }
 
 
 }

@@ -11,8 +11,7 @@ session_start();
 require "header.php"
 ?>
 
-<!--<form  action="basket.php" method="POST">-->
-<!---->
+
 
     <?php
 
@@ -24,12 +23,9 @@ require "header.php"
 
 
 
-<!--    <button type="submit" class="btn btn-primary">Submit</button>-->
-<!---->
 
 
-<!--</form>-->
-<!---->
+
 
 
 

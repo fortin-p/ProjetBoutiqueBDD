@@ -19,17 +19,17 @@ function displayArticle(Article $article){
 
     ?>
     <form action="basket.php" method="post">
-
-
-
-        <div class="container flex-column-reverse">
+    <div class="container">
+        <div class="d-flex flex-wrap ">
             <div class="card" style="width: 18rem;">
                 <?php    echo "<img class='card-img-top' src='". $article->image . "' alt=''/>";?>
                 <div class="card-body"><?php
                     echo  "<h5 class='card-title text-center'> ". $article->name." </h5> ";
                     echo  "<p class='card-text'>" .$article->description ."</p>";
                     echo "<p> prix du produit :" .$article->price."</p>";?>
-                    <button  type='submit' class='' name='addarticles[]' value="<?= $article->id ?>">Add to cart </button>
+
+                        <button  type='submit' class='' name='addarticles[]' value="<?= $article->id ?>">Add to cart </button>
+
                     <?php
 
                     if ($article instanceof Shoe){
@@ -37,14 +37,14 @@ function displayArticle(Article $article){
                         <p> Pointure: <?php  echo $article->getpointure();?></p>
                         <p> Marque : <?php echo $article->getMarque();?></p>
                         <?php
-
                     }
                     ?>
                 </div>
             </div>
         </div>
-
+    </div>
     </form>
+
 
     <?php
 

@@ -10,33 +10,51 @@ require_once 'class_basket.php';
 $messageErrorPrice = "";
 $articlesQuantite = [];
 
-if (isset($_POST['addarticles'])) {
-
-        $_SESSION['panier'] = [];
-
-    foreach ($_POST['addarticles'] as $id){
-
-        $_SESSION['panier'][$id]=$id.',1';   //explode on sépare l'index0 id de l'index1 quantity que l'on met a 1
-    }
-}
-$basket = new Basket($_SESSION);
-
-if (isset($_POST['recalculer'])){
-
-    foreach ($_POST['setQuantityArticle'] as $id => $quantity){
-
-        foreach ($basket->basket as $article) {
-
-            if ($id == $article->id) {
-
-                $article->setQuantityBasket($quantity);
-                $_SESSION['panier'][$id] = $id . ',' . $article->getQuantityBasket();
+$basket = new Basket();
+    if (isset($_POST['addarticles'])){
+        if (!isset($_SESSION['panier'])){
+            foreach ($basket->basket as $article){
+                $basket->setBasket();
 
             }
 
         }
-    }
+        foreach ($_POST['addarticles'] as $id){
+            $basket->add($id);
+            ?><pre><?php
+            var_dump($basket);?>
+            </pre><?php
+            echo 'id :'. $id;
+        }
+
+displayBask($basket);
+
+
+
+
+
+
+
 }
+
+
+
+//if (isset($_POST['recalculer'])){
+//
+//    foreach ($_POST['setQuantityArticle'] as $id => $quantity){
+//
+//        foreach ($basket->basket as $article) {
+//
+//            if ($id == $article->id) {
+//
+//                $article->setQuantityBasket($quantity);
+//                $_SESSION['panier'][$id] = $id . ',' . $article->getQuantityBasket();
+//
+//            }
+//
+//        }
+//    }
+//}
 
 
 ////Creation de la commande
@@ -57,6 +75,7 @@ require "header.php"
 <form action="#" method="POST">
     <?php
 
+    $basket = new Basket();
     displayBask($basket);
 
     ?>
