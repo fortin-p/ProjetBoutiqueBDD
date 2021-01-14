@@ -31,7 +31,7 @@
                             <a class="nav-link" href="basket.php">Panier</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Panier Vide</a>
+                            <a class="nav-link" name="deleteBasket" href="#">Panier Vide</a>
                         </li>
 
 

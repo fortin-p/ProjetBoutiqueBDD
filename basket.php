@@ -11,12 +11,23 @@ $messageErrorPrice = "";
 $articlesQuantite = [];
 
 if (isset($_POST['addarticles'])) {
-    $_SESSION['panier'] = [];
-    foreach ($_POST['addarticles'] as $id){
 
-        $_SESSION['panier'][$id]=$id.',1';   //explode on sépare l'index id de l'index quantity que l'on met a 1
+    if (!isset($_SESSION['panier'])) {
+
+        $_SESSION['panier'] = [];
     }
+    var_dump($_SESSION['panier']);
 }
+    foreach ($_POST['addarticles'] as $id){
+       if (isset($_POST['addarticles'])){
+           $_SESSION['panier'][$id]=$id.',1';   //explode on sépare l'index id de l'index quantity que l'on met a 1
+       }
+
+
+}
+
+
+
 $basket = new Basket($_SESSION);
 
 if (isset($_POST['recalculer'])){
@@ -35,16 +46,24 @@ if (isset($_POST['recalculer'])){
         }
     }
 }
-
-
-////Creation de la commande
-//if (isset($_POST['recalculer'])) {
-//    $total =  basketTotal($basket) ;
-//    $req = createOrder($customer_id=1,$total,$basket);
-//    }
-//    echo 'commande ajouté';
+//if (isset($_SESSION['panier'])){
+//    foreach ($_POST['addarticles'] as $id => $quantity){
 //
-//?>
+//        $basket->update($id,$quantity);
+//
+//    }
+//
+//}
+
+//Creation de la commande
+if (isset($_POST['recalculer'])) {
+    $total =  basketTotal($basket) ;
+    $req = createOrder($customer_id=1,$total,$basket);
+    echo 'commande ajouté';
+}
+
+
+?>
 
 <?php
 require "header.php"
@@ -56,7 +75,7 @@ require "header.php"
 
     displayBask($basket);
 
-
+//session_destroy();
 
     ?>
 
