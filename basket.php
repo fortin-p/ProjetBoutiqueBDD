@@ -49,11 +49,11 @@ if (isset($_POST['recalculer'])){
 
 
 //Creation de la commande
-if (isset($_POST['recalculer'])) {
-    $total =  basketTotal($basket) ;
-    $req = createOrder($customer_id=1,$total,$basket);
-    }
-    echo 'commande ajouté';
+//if (isset($_POST['recalculer'])) {
+  //  $total =  basketTotal($basket) ;
+    //$req = createOrder($customer_id=1,$total,$basket);
+    //}
+    //echo 'commande ajouté';
 
 ?>
 
