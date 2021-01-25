@@ -8,7 +8,14 @@ require_once 'class_chaussure.php';
 
 
 require "header.php";
-$shoe = new Catalogue();
-displayShoe($shoe);
-
 ?>
+<div class="container">
+    <div class="d-flex flex-wrap">
+        <?php
+
+        $shoe = new Catalogue();
+        displayShoe($shoe);
+
+        ?>
+    </div>
+</div>

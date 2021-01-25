@@ -10,56 +10,16 @@ require_once 'class_basket.php';
 
 $basket = new Basket();
 if (isset($_POST['addarticles'])){
-if (!isset($_SESSION['panier'])) {
-    foreach ($basket->basket as $article) {
-        $basket->setBasket();
+    if (!isset($_SESSION['panier'])){
+        $_SESSION['panier'] = [];
+    }
+
+    foreach ($_POST['addarticles'] as $key => $value) {
+
+        $basket->addArticle($value);
 
     }
 }
-}
-foreach ($_POST['addarticles'] as $id){
-    $basket->add($id);
-    ?><pre><?php
-    var_dump($basket);?>
-    </pre><?php
-    echo 'id :'. $id;
-}
-var_dump($basket);
-
-
-
-
-
-
-
-//displayBask($basket);
-
-
-
-
-
-
-
-
-
-
-
-//if (isset($_POST['recalculer'])){
-//
-//    foreach ($_POST['setQuantityArticle'] as $id => $quantity){
-//
-//        foreach ($basket->basket as $article) {
-//
-//            if ($id == $article->id) {
-//
-//                $article->setQuantityBasket($quantity);
-//                $_SESSION['panier'][$id] = $id . ',' . $article->getQuantityBasket();
-//
-//            }
-//
-//        }
-//    }
-//}
 
 
 ////Creation de la commande
@@ -78,13 +38,17 @@ require "header.php"
 <h1 class="text-center">PANIER</h1>
 
 <form action="#" method="POST">
+    <div class="container">
+        <div class="d-flex flex-wrap">
     <?php
 
-    $basket = new Basket();
+
     displayBask($basket);
 
     ?>
+    </div>
 
+    </div>
     <?php
 
     echo "le prix total est : " . basketTotal($basket);// total des articles selectionnez

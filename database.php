@@ -24,6 +24,16 @@ function selectAll(){
     return $reponse;
 
 }
+
+function selectArticle($id){
+    $bdd = connect();
+    $reponse = $bdd->query("SELECT * from products Where id=$id");
+    return $reponse;
+
+}
+
+
+
 function selectAllShoes(){
     $bdd = connect();
     $reponse = $bdd->query('SELECT * from products WHERE pointure');

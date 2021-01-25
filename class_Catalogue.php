@@ -6,14 +6,14 @@ class Catalogue
 {
 
     private $articles;
-
-
     private $articlesShoes;
     private $articlesfruits;
 
     public function __construct(){
 
     }
+
+
 
     public function getAllArticle(): array
     {   //On récupére nos donnees des articles!

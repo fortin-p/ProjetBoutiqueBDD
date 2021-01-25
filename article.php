@@ -12,7 +12,7 @@ class Article
     public $available;
     public $id;
     public $categorie;
-    private $quantityBasket=1;
+    private $quantityBasket;
 
 
     public function getQuantityBasket()

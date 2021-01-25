@@ -27,9 +27,7 @@ function displayArticle(Article $article){
                     echo  "<h5 class='card-title text-center'> ". $article->name." </h5> ";
                     echo  "<p class='card-text'>" .$article->description ."</p>";
                     echo "<p> prix du produit :" .$article->price."</p>";?>
-
                         <button  type='submit' class='' name='addarticles[]' value="<?= $article->id ?>">Add to cart </button>
-
                     <?php
 
                     if ($article instanceof Shoe){
@@ -53,6 +51,7 @@ function displayArticle(Article $article){
 function displayCat(Catalogue $catalogue)
 {
     foreach ($catalogue->getAllArticle() as $article){
+
         displayArticle($article);
 
 
@@ -63,6 +62,7 @@ function displayCat(Catalogue $catalogue)
 
 function displayShoe(Catalogue $catalogue){
     foreach ($catalogue->getAllShoe() as $shoe){
+
         displayArticle($shoe);
 
     }
@@ -81,8 +81,8 @@ function displayFruits(Catalogue $catalogue){
 }
 function displayBask(Basket $basket)
 {
-    foreach ($basket->basket as $newBasket){
-        displayBasket($newBasket);
+    foreach ($basket->getArticles() as $article){
+        displayBasket($article);
 
     }
 
@@ -99,7 +99,7 @@ function displayBasket(Article $article) // functions pour afficher tout les ite
     }
     echo "<h2 class='text-center text-white'>" . $article->description . "</h2>";
     echo "<label for='quantity'>Quantity:</label>";
-    echo "<input class='d-inline'  type='number' id='quantity' name='setQuantityArticle[".$article->id."]' value='".$article->getQuantityBasket()."'   min='1' style='width:45px'>"; //value=$_SESSION['panier'][$article->id]
+    echo "<input class='d-inline'  type='number' id='quantity' name='setQuantityArticle[".$article->id."]' value='".$article->getQuantityBasket()."'   min='1' style='width:45px'>";
     echo "<input class='btn btn-danger' type='submit' value='Supprimer' name='delete[".$article->id."]' value=''>";?>
     </div><?php
 }
