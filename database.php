@@ -2,7 +2,7 @@
 function connect(){
     try
     {
-        $bdd = new PDO('mysql:host=localhost;dbname=my_base;charset=utf8', 'pef', 'PefCampus38');
+        $bdd = new PDO('mysql:host=localhost;dbname=pefdb;charset=utf8', 'pef', '');
     }
     catch(Exception $e)
     {
